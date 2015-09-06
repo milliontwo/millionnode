@@ -5,8 +5,8 @@
  *      Author: najiji
  */
 
-#ifndef CONFIG_H_
-#define CONFIG_H_
+#ifndef MOTOR_CONFIG_H_
+#define MOTOR_CONFIG_H_
 
 #include <avr/io.h>
 
@@ -32,7 +32,7 @@
 #define MOT3_C PD2
 #define MOT3_D PD3
 
-#define MOT4_DDR DDR
+#define MOT4_DDR DDRD
 #define MOT4_PORT PORTD
 #define MOT4_A PD4
 #define MOT4_B PD5
@@ -40,4 +40,4 @@
 #define MOT4_D PD7
 
 
-#endif /* CONFIG_H_ */
+#endif /* MOTOR_CONFIG_H_ */
