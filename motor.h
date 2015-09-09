@@ -19,7 +19,7 @@ typedef volatile uint8_t Register;
 typedef struct {
 	Register* 	port;				//the hardware port register, the motor is connected
 	uint8_t 	pins[4];			//The pins on the port on which the wires of motor are connected.
-	uint8_t 	sequence_position;	//the current position in the four-beat cycle of that motor
+	int8_t 		sequence_position;	//the current position in the four-beat cycle of that motor
 } Motor;
 
 

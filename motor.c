@@ -14,7 +14,7 @@
 #define EIGHT_SHOT 3
 
 //Define operation mode to be used
-#define MODE EIGHT_SHOT
+#define MODE TWO_PHASE
 
 /*
  * Calculates new port state for desired sequence position and applies it
@@ -111,11 +111,11 @@ void _motor_step_into_sequence_position(Motor* motor){
 void motor_step_forward(Motor* motor) {
 	motor->sequence_position++;
 #if MODE == EIGHT_SHOT
-	if(motor->sequence_position >= 7) {
+	if(motor->sequence_position > 7) {
 		motor->sequence_position = 0;
 	}
 #else
-	if(motor->sequence_position >= 3) {
+	if(motor->sequence_position > 3) {
 		motor->sequence_position = 0;
 	}
 #endif
@@ -127,7 +127,7 @@ void motor_step_forward(Motor* motor) {
  */
 void motor_step_backward(Motor* motor){
 
-	if(motor->sequence_position <= 0) {
+	if(motor->sequence_position < 0) {
 #if MODE == EIGHT_SHOT
 		motor->sequence_position = 7;
 #else

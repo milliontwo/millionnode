@@ -8,6 +8,7 @@
  */
 
 #include <avr/io.h>
+#include <util/delay.h>
 #include "io/uart.h"
 #include "motor.h"
 #include "motor_config.h"
@@ -26,6 +27,7 @@ int main(){
 	MOT2_DDR |= (1<<MOT2_A)|(1<<MOT2_B)|(MOT2_C)|(MOT2_D);
 	MOT3_DDR |= (1<<MOT3_A)|(1<<MOT3_B)|(MOT3_C)|(MOT3_D);
 	MOT4_DDR |= (1<<MOT4_A)|(1<<MOT4_B)|(MOT4_C)|(MOT4_D);
+	DDRD = 0xFF;
 
 	/* create the 4 motors on the stack */
 	Motor mot1 = {
@@ -56,6 +58,8 @@ int main(){
 	 */
 	while(1) {
 
+		motor_step_forward(&mot4);
+		_delay_ms(10);
 	}
 
 	return 0;
