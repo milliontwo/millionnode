@@ -21,8 +21,8 @@
 #define UBBR_115200 8
 
 
-volatile fifo txbuf;
-volatile fifo rxbuf;
+volatile Fifo txbuf;
+volatile Fifo rxbuf;
 
 
 

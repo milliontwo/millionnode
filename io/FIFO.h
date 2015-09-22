@@ -7,7 +7,7 @@
 
 #ifndef FIFO_H_
 #define FIFO_H_
-#define FIFOSIZE 100
+#define FIFOSIZE 20
 
 
 
@@ -16,21 +16,19 @@ typedef volatile struct
 	char data[FIFOSIZE];
 	int head;
 	int tail;
-} fifo;
+} Fifo;
 
 
-void Fifo_Init(fifo* list);
+void fifo_init(Fifo* list);
 
-int Fifo_Enqueue(fifo* list, char item);
+int fifo_enqueue(Fifo* list, char item);
 
-char Fifo_Dequeue(fifo* list);
+char fifo_dequeue(Fifo* list);
 
-char* Fifo_Dump(fifo* list, char* destination);
+void fifo_flush(Fifo* list);
 
-void Fifo_Flush(fifo* list);
+int	fifo_empty(Fifo* list);
 
-int	Fifo_Empty(fifo* list);
-
-int Fifo_Length(fifo* list);
+int fifo_length(Fifo* list);
 
 #endif /* FIFO_H_ */

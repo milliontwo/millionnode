@@ -10,6 +10,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "io/uart.h"
+#include "io/i2c.h"
+#include "io/fifo.h"
 #include "motor.h"
 #include "motor_config.h"
 

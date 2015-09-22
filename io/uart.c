@@ -47,15 +47,15 @@ void uart_init(unsigned int baud)
 	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
 
 	//setup fifos
-	Fifo_Init(&txbuf);
-	Fifo_Init(&rxbuf);
+	fifo_init(&txbuf);
+	fifo_init(&rxbuf);
 }
 
 //------------------------------------------------------------------------------------------------------
 
 int uart_send_char(char c)
 {
-	Fifo_Enqueue(&txbuf, c);	//queue element
+	fifo_enqueue(&txbuf, c);	//queue element
 	UCSR0B |= (1<<UDRIE0); //Force TX interrupt;
 	return 1;
 }
@@ -79,8 +79,8 @@ ISR(USART_UDRE_vect) //data register empty
 {
 	int back = SREG;
 	cli();
-	if(!Fifo_Empty(&txbuf))
-		UDR0 = Fifo_Dequeue(&txbuf);
+	if(!fifo_empty(&txbuf))
+		UDR0 = fifo_dequeue(&txbuf);
 	else
 		UCSR0B &= ~(1<<UDRIE0); //disable interrupt
 	SREG = back;
